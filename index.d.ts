@@ -1,28 +1,28 @@
 export interface FlowRequestParameters {
-    flowChunkNumber: number;
-    flowChunkSize: number;
-    flowCurrentChunkSize: number;
-    flowTotalSize: number;
-    flowIdentifier: string;
-    flowFilename: string;
-    flowRelativePath: string;
-    flowTotalChunks: number;
+    flowChunkNumber?: number;
+    flowChunkSize?: number;
+    flowCurrentChunkSize?: number;
+    flowTotalSize?: number;
+    flowIdentifier?: string;
+    flowFilename?: string;
+    flowRelativePath?: string;
+    flowTotalChunks?: number;
 }
 
 export interface FlowChunk {
-    flowObj: Flow;
-    fileObj: FlowFile;
-    offset: number;
-    tested: boolean;
-    retries: number;
-    pendingRetry: boolean;
-    preprocessState: number;
-    readState: number;
-    loaded: number;
-    total: number;
-    chunkSize: number;
-    startByte: number;
-    xhr: XMLHttpRequest;
+    flowObj?: Flow;
+    fileObj?: FlowFile;
+    offset?: number;
+    tested?: boolean;
+    retries?: number;
+    pendingRetry?: boolean;
+    preprocessState?: number;
+    readState?: number;
+    loaded?: number;
+    total?: number;
+    chunkSize?: number;
+    startByte?: number;
+    xhr?: XMLHttpRequest;
 
     // Methods
     abort(): void;
@@ -38,23 +38,23 @@ export interface FlowChunk {
     test(): void;
 
     // Events
-    doneHandler: (_) => void;
-    progressHandler: (_) => void;
-    testHandler: (_) => void;
+    doneHandler?: (_) => void;
+    progressHandler?: (_) => void;
+    testHandler?: (_) => void;
 }
 
 export interface FlowFile {
-    flowObj: Flow;
-    file: File;
-    name: string;
-    relativePath: string;
-    size: number;
-    uniqueIdentifier: string;
-    averageSpeed: number;
-    currentSpeed: number;
-    chunks: [FlowChunk];
-    paused: boolean;
-    error: boolean;
+    flowObj?: Flow;
+    file?: File;
+    name?: string;
+    relativePath?: string;
+    size?: number;
+    uniqueIdentifier?: string;
+    averageSpeed?: number;
+    currentSpeed?: number;
+    chunks?: [FlowChunk];
+    paused?: boolean;
+    error?: boolean;
 
     // Methods
     progress(relative): number;
@@ -72,31 +72,31 @@ export interface FlowFile {
 }
 
 export interface FlowOptions {
-    target: string | ((flowFile: FlowFile, flowChunk: FlowChunk, isTest: boolean) => string);
-    singleFile: boolean;
-    chunkSize: number;
-    forceChunkSize: boolean;
-    simultaneousUploads: number;
-    fileParameterName: string;
-    query: Object  | ((flowFile: FlowFile, flowChunk: FlowChunk, isTest: boolean) => string);
-    headers: Object  | ((flowFile: FlowFile, flowChunk: FlowChunk, isTest: boolean) => string);
-    withCredentials: boolean;
-    method: string;
-    testMethod: string | ((flowFile: FlowFile, flowChunk: FlowChunk) => string);
-    uploadMethod: string | ((flowFile: FlowFile, flowChunk: FlowChunk) => string);
-    allowDuplicateUploads: boolean;
-    prioritizeFirstAndLastChunk: boolean;
-    testChunks: boolean;
-    preprocess: (flowChunk: FlowChunk) => void;
-    initFileFn: (flowFile: FlowFile, flowChunk: FlowChunk) => void;
-    readFileFn: (flowFile: FlowFile, startByte: number, endByte: number, fileType: string, flowChunk: FlowChunk) => void;
-    generateUniqueIdentifier: () => string;
-    maxChunkRetries: number;
-    chunkRetryInterval: number;
-    progressCallbacksInterval: number;
-    speedSmoothingFactor: number;
-    successStatuses: [number];
-    permanentErrors: [number];
+    target?: string | ((flowFile: FlowFile, flowChunk: FlowChunk, isTest: boolean) => string);
+    singleFile?: boolean;
+    chunkSize?: number;
+    forceChunkSize?: boolean;
+    simultaneousUploads?: number;
+    fileParameterName?: string;
+    query?: Object  | ((flowFile: FlowFile, flowChunk: FlowChunk, isTest: boolean) => string);
+    headers?: Object  | ((flowFile: FlowFile, flowChunk: FlowChunk, isTest: boolean) => string);
+    withCredentials?: boolean;
+    method?: string;
+    testMethod?: string | ((flowFile: FlowFile, flowChunk: FlowChunk) => string);
+    uploadMethod?: string | ((flowFile: FlowFile, flowChunk: FlowChunk) => string);
+    allowDuplicateUploads?: boolean;
+    prioritizeFirstAndLastChunk?: boolean;
+    testChunks?: boolean;
+    preprocess?: (flowChunk: FlowChunk) => void;
+    initFileFn?: (flowFile: FlowFile, flowChunk: FlowChunk) => void;
+    readFileFn?: (flowFile: FlowFile, startByte: number, endByte: number, fileType: string, flowChunk: FlowChunk) => void;
+    generateUniqueIdentifier?: () => string;
+    maxChunkRetries?: number;
+    chunkRetryInterval?: number;
+    progressCallbacksInterval?: number;
+    speedSmoothingFactor?: number;
+    successStatuses?: [number];
+    permanentErrors?: [number];
 }
 
 export interface Flow {
